@@ -14,3 +14,6 @@ for (let i = 1; i <= 16; i++) {
 }
 
 
+//create body reference
+//create container div
+//create squares divs
