@@ -15,18 +15,38 @@ body {
     align-items: center;
 }
 
+button {
+    width: 15%;
+    height: 10%;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:active {
+    background-color: rgb(209, 209, 209);
+    color: white;
+}
+
 .square {
-    border: 2px solid black;
+    border: 1px solid black;
+
+
 }
 
 .container {
-    border: 5px solid black;
+    border: 3px solid black;
 
     height: 960px;
     width: 960px;
 
+    /* display: flex; */
+
     display: grid;
 
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(16, 1fr);
+    /* grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr); */
 }
