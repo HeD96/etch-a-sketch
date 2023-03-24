@@ -1,19 +1,20 @@
-const docBody = document.body;
-const divContainer = document.createElement("div");
-const div = document.createElement("div");
-
-divContainer.classList.add("container");
-div.classList.add("square");
-
-docBody.appendChild(divContainer);
-
-for (let i = 1; i <= 16; i++) {
-    for (let j = 1; j <= 16; j++) {
-        divContainer.appendChild(div.cloneNode(true));
-    }
-}
-
-
 //create body reference
 //create container div
 //create squares divs
+
+const bodyDiv = document.body;
+const containerDiv = document.createElement('div');
+const squareDiv = document.createElement('div');
+
+containerDiv.classList.add("container");
+squareDiv.classList.add("square");
+
+bodyDiv.appendChild(containerDiv);
+
+StartingBoard();
+
+function StartingBoard() {
+    for (let i = 1; i <= 256; i++) {
+        containerDiv.appendChild(squareDiv.cloneNode(true));
+    }
+}
