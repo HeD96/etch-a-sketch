@@ -1,7 +1,3 @@
-//create body reference
-//create container div
-//create squares divs
-
 const bodyDiv = document.body;
 const containerDiv = document.createElement('div');
 const squareDiv = document.createElement('div');
@@ -12,15 +8,22 @@ squareDiv.classList.add("square");
 
 bodyDiv.appendChild(containerDiv);
 
-// StartingBoard();
+StartingBoard();
 
 btn.addEventListener('click', function() {
 
-    // ClearingBoard();
+    ClearingBoard();
     CreatingNewBoard();
 });
 
+squareDiv.addEventListener('mouseover', function() {
+    this.style.backgroundColor = 'black';
+})
+
 function StartingBoard() {
+
+    containerDiv.style.cssText = "grid-template-columns:repeat(16, 1fr);grid-template-rows: repeat(16, 1fr)";
+
     for (let i = 1; i <= 256; i++) {
         containerDiv.appendChild(squareDiv.cloneNode(true));
     }
@@ -39,7 +42,8 @@ function CreatingNewBoard() {
     let gridRows = prompt('How many rows?');
     const squareNum = Math.pow(gridRows, 2);
 
-    containerDiv.style.cssText = "grid-template-columns:repeat(" + gridRows + ", minmax(0, 1fr));grid-template-rows: repeat(" + gridRows + ", minmax(0, 1fr)";
+    // containerDiv.style.cssText = "grid-template-columns:repeat(" + gridRows + ", minmax(0, 1fr));grid-template-rows: repeat(" + gridRows + ", minmax(0, 1fr)";
+    containerDiv.style.cssText = "grid-template-columns:repeat(" + gridRows + ", 1fr);grid-template-rows: repeat(" + gridRows + ", 1fr)";
 
     for (let i = 1; i <= squareNum; i++) {
         containerDiv.appendChild(squareDiv.cloneNode(true));
