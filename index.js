@@ -1,14 +1,18 @@
-const bodyDiv = document.body;
-const containerDiv = document.createElement('div');
-const squareDiv = document.createElement('div');
-const btn = document.querySelector('button');
+//base elements creation
 
+const bodyDiv = document.body;
+
+const containerDiv = document.createElement('div');
 containerDiv.classList.add("container");
+
+const squareDiv = document.createElement('div');
 squareDiv.classList.add("square");
 
 bodyDiv.appendChild(containerDiv);
 
-StartingBoard();
+//button function
+
+const btn = document.querySelector('button');
 
 btn.addEventListener('click', function() {
 
@@ -16,36 +20,47 @@ btn.addEventListener('click', function() {
     CreatingNewBoard();
 });
 
-squareDiv.addEventListener('mouseover', function() {
-    this.style.backgroundColor = 'black';
-})
+//initial board
 
-function StartingBoard() {
+StartingBoard();
 
-    containerDiv.style.cssText = "grid-template-columns:repeat(16, 1fr);grid-template-rows: repeat(16, 1fr)";
+//main functionality
+
+function StartingBoard() { //default 16x16 board
 
     for (let i = 1; i <= 256; i++) {
         containerDiv.appendChild(squareDiv.cloneNode(true));
     }
+
+    containerDiv.style.cssText = "grid-template-columns:repeat(16, 1fr);grid-template-rows: repeat(16, 1fr)";
+
+    StartPainting();
 }
 
-function ClearingBoard() {
-    containerDiv.innerHTML = '';
-}
-
-function CreatingNewBoard() {
-
-    // if (gridRows > 100) {
-    //     alert("Choose the number less than 100");
-    // }
-
+function CreatingNewBoard() { //new custom board
+    
     let gridRows = prompt('How many rows?');
     const squareNum = Math.pow(gridRows, 2);
-
-    // containerDiv.style.cssText = "grid-template-columns:repeat(" + gridRows + ", minmax(0, 1fr));grid-template-rows: repeat(" + gridRows + ", minmax(0, 1fr)";
-    containerDiv.style.cssText = "grid-template-columns:repeat(" + gridRows + ", 1fr);grid-template-rows: repeat(" + gridRows + ", 1fr)";
 
     for (let i = 1; i <= squareNum; i++) {
         containerDiv.appendChild(squareDiv.cloneNode(true));
     }
+
+    containerDiv.style.cssText = "grid-template-columns:repeat(" + gridRows + ", 1fr);grid-template-rows: repeat(" + gridRows + ", 1fr)";
+
+    StartPainting();
+}
+
+function ClearingBoard() { //clear the board
+    containerDiv.innerHTML = '';
+}
+
+function StartPainting() { //painting
+    let paintSquares = document.querySelectorAll('.square');
+
+    paintSquares.forEach(function(square) {
+    square.addEventListener('mousemove', function() {
+        this.style.backgroundColor = 'black';
+    });
+});
 }
