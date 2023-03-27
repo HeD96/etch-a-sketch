@@ -40,6 +40,12 @@ function StartingBoard() { //default 16x16 board
 function CreatingNewBoard() { //new custom board
     
     let gridRows = prompt('How many rows?');
+
+    while (gridRows > 100 || gridRows < 0) { //numbers more than 100 and less than 0 are not allowed
+        alert('Number can\'t be more than 100 and less than 0!');
+        gridRows = prompt('How many rows?');
+    }
+
     const squareNum = Math.pow(gridRows, 2);
 
     for (let i = 1; i <= squareNum; i++) {
